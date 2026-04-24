@@ -45,9 +45,8 @@
             <div class="md:col-span-3 bg-white rounded-3xl shadow-xl p-10">
                 <form id="ticketForm" action="https://formsubmit.co/graniteheed@gmail.com" method="POST" class="space-y-8">
                     <input type="hidden" name="_subject" value="Summer Ball Ticket - New Booking">
-                    <input type="hidden" name="_next" value="https://graniteheed-gif.github.io/RNAS-Yeovilton-Summer-Ball-2026/?success=true">
-                    <input type="hidden" name="_captcha" value="false">
                     <input type="hidden" name="_template" value="table">
+                    <input type="hidden" name="_captcha" value="false">
 
                     <div class="grid grid-cols-2 gap-6">
                         <div>
@@ -122,22 +121,25 @@
             document.getElementById('totalPrice').textContent = n * PRICE;
         }
 
-        // Generate reference once before submit
         document.getElementById('ticketForm').addEventListener('submit', function() {
             const ref = "YB-" + Date.now().toString(36).toUpperCase().slice(-6);
             
+            // Add to form for email
             const refInput = document.createElement('input');
             refInput.type = 'hidden';
             refInput.name = 'booking_reference';
             refInput.value = ref;
             this.appendChild(refInput);
+
+            // Pass reference in URL for success page
+            this.action = "https://formsubmit.co/graniteheed@gmail.com?ref=" + ref;
         });
 
-        // Show success screen
         window.onload = function() {
             updateTotal();
-            if (window.location.search.includes('success=true')) {
-                const urlParams = new URLSearchParams(window.location.search);
+
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.has('success') || urlParams.has('ref')) {
                 const ref = urlParams.get('ref') || "YB-" + Date.now().toString(36).toUpperCase().slice(-6);
                 document.getElementById('successScreen').classList.remove('hidden');
                 document.getElementById('bookingRefDisplay').textContent = ref;
