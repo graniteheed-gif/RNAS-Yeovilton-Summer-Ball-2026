@@ -122,15 +122,24 @@
             document.getElementById('totalPrice').textContent = n * PRICE;
         }
 
-        window.onload = function() {
-            updateTotal();
+        // Add booking reference just before submitting
+        document.getElementById('ticketForm').addEventListener('submit', function(e) {
+            const ref = "YB-" + Date.now().toString(36).toUpperCase().slice(-6);
+            
+            const refInput = document.createElement('input');
+            refInput.type = 'hidden';
+            refInput.name = 'booking_reference';
+            refInput.value = ref;
+            this.appendChild(refInput);
 
-            if (window.location.search.includes('success=true')) {
-                const ref = "YB-" + Date.now().toString(36).toUpperCase().slice(-6);
+            // Show success screen immediately
+            setTimeout(() => {
                 document.getElementById('successScreen').classList.remove('hidden');
                 document.getElementById('bookingRefDisplay').textContent = ref;
-            }
-        };
+            }, 800);
+        });
+
+        window.onload = updateTotal;
     </script>
 </body>
 </html>
