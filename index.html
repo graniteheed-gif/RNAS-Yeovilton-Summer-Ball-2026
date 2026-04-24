@@ -123,7 +123,7 @@
             document.getElementById('totalPrice').textContent = n * PRICE;
         }
 
-        // Generate reference before form submits
+        // Generate reference before submit
         document.getElementById('ticketForm').addEventListener('submit', function() {
             currentRef = "YB-" + Date.now().toString(36).toUpperCase().slice(-6);
             
