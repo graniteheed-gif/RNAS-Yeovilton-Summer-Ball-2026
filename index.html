@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RNAS Yeovilton Summer Ball • Official Ticket Sales</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Playfair+Display:wght@700&display=swap');
+        body { font-family: 'Inter', system_ui, sans-serif; }
+        .heading-font { font-family: 'Playfair Display', sans-serif; }
+        .navy-gradient { background: linear-gradient(135deg, #001f3f 0%, #003366 100%); }
+    </style>
+</head>
+<body class="bg-slate-50">
+    <!-- HEADER / NAV -->
+    <nav class="navy-gradient text-white py-4 sticky top-0 z-50 shadow-lg">
+        <div class="max-w-6xl mx-auto px-6 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <i class="fa-solid fa-plane fa-2xl"></i>
+                <div>
+                    <h1 class="heading-font text-2xl tracking-tight">RNAS YEOVILTON</h1>
+                    <p class="text-xs tracking-[2px] -mt-1 opacity-90">SUMMER BALL 2026</p>
+                </div>
+            </div>
+            <div class="hidden md:flex items-center gap-8 text-sm font-medium">
+                <a href="#tickets" class="hover:text-amber-400 transition">Buy Tickets</a>
+                <a href="#info" class="hover:text-amber-400 transition">Event Info</a>
+                <a href="#faq" class="hover:text-amber-400 transition">FAQ</a>
+            </div>
+            <div class="text-xs bg-white/20 px-4 py-2 rounded-full font-medium flex items-center gap-2">
+                <i class="fa-solid fa-lock"></i>
+                SECURE TICKET SALES
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <header class="navy-gradient text-white py-20">
+        <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+            <div>
+                <div class="inline-flex items-center bg-amber-400 text-navy-900 text-sm font-semibold px-4 py-2 rounded-full mb-6">
+                    <i class="fa-solid fa-ticket mr-2"></i>
+                    OFFICIAL TICKET PORTAL
+                </div>
+                <h2 class="heading-font text-6xl leading-none tracking-tighter mb-4">RNAS Yeovilton<br>Summer Ball 2026</h2>
+                <p class="text-xl opacity-90 mb-8">Join us for a spectacular evening of aviation heritage, fine dining and entertainment at the iconic RNAS Yeovilton.</p>
+                
+                <div class="flex items-center gap-6 text-sm">
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-calendar text-amber-400"></i>
+                        <div>
+                            <span class="block font-semibold">Saturday 27 June 2026</span>
+                            <span class="opacity-75 text-xs">19:00 – Late</span>
+                        </div>
+                    </div>
+                    <div class="h-10 w-px bg-white/30"></div>
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-location-dot text-amber-400"></i>
+                        <div>
+                            <span class="block font-semibold">Senior Rates Mess, RNAS Yeovilton</span>
+                            <span class="opacity-75 text-xs">BA22 8HT</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-12 flex items-center gap-4">
+                    <a href="#tickets" 
+                       class="bg-amber-400 hover:bg-amber-300 transition text-navy-900 font-semibold px-8 py-4 rounded-2xl flex items-center gap-3 text-lg">
+                        <i class="fa-solid fa-ticket"></i>
+                        GET YOUR TICKETS NOW
+                    </a>
+                    <a href="#info" 
+                       class="border border-white/50 hover:bg-white/10 transition font-medium px-6 py-4 rounded-2xl flex items-center gap-2">
+                        <i class="fa-solid fa-info-circle"></i>
+                        MORE INFO
+                    </a>
+                </div>
+            </div>
+            
+            <div class="hidden md:block relative">
+                <div class="bg-white/10 backdrop-blur-xl rounded-3xl p-8 border border-white/20">
+                    <div class="text-center">
+                        <div class="text-6xl font-bold text-amber-400 mb-2">£120</div>
+                        <p class="uppercase text-sm tracking-widest">per person • Black Tie</p>
+                        <div class="h-px bg-white/30 my-8"></div>
+                        <div class="grid grid-cols-3 gap-4 text-center text-sm">
+                            <div><i class="fa-solid fa-utensils mb-2 block"></i>3-Course Dinner</div>
+                            <div><i class="fa-solid fa-music mb-2 block"></i>Live Band</div>
+                            <div><i class="fa-solid fa-champagne-glasses mb-2 block"></i>Bar &amp; Raffle</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="absolute -bottom-6 -right-6 bg-white text-navy-900 rounded-2xl shadow-2xl p-6 max-w-[200px]">
+                    <i class="fa-solid fa-shield-halved text-3xl text-green-600 mb-3"></i>
+                    <p class="font-semibold">Secure &amp; Official</p>
+                    <p class="text-xs text-slate-600">All proceeds support the RNAS Yeovilton Families Fund</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- TICKET FORM SECTION -->
+    <section id="tickets" class="max-w-6xl mx-auto px-6 py-16">
+        <div class="text-center mb-12">
+            <h2 class="text-4xl font-semibold mb-3">Reserve Your Tickets</h2>
+            <p class="text-slate-600 max-w-md mx-auto">Complete the form below. Your details will be securely recorded and added to our official guest list.</p>
+        </div>
+
+        <div class="grid md:grid-cols-5 gap-12">
+            <!-- FORM -->
+            <div class="md:col-span-3 bg-white rounded-3xl shadow-xl p-8 md:p-10">
+                <form id="ticketForm" action="https://formsubmit.co/graniteheed@gmail.com" method="POST" class="space-y-8">
+                    
+                    <!-- Hidden fields for Formsubmit -->
+                    <input type="hidden" name="_subject" value="New Summer Ball Ticket Purchase - {{name}}">
+                    <input type="hidden" name="_next" value="https://yourusername.github.io/rnas-yeovilton-summer-ball-tickets/#success">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_template" value="table">
+
+                    <div class="grid grid-cols-2 gap-6">
+                        <!-- Full Name -->
+                        <div>
+                            <label class="block text-sm font-medium text-slate-700 mb-2">Full Name <span class="text-red-500">*</span></label>
+                            <input type="text" name="full_name" id="full_name" required
+                                   class="w-full px-4 py-4 border border-slate-200 rounded-2xl focus:outline-none focus:border-amber-400 text-lg">
+                        </div>
+                        
+                        <!-- Service Number (optional) -->
+                        <div>
+                            <label class="block text-sm font-medium text-slate-700 mb-2">Service Number <span class="text-slate-400 text-xs">(if applicable)</span></label>
+                            <input type="text" name="service_number" id="service_number"
+                                   class="w-full px-4 py-4 border border-slate-200 rounded-2xl focus:outline-none focus:border-amber-400 text-lg">
+                        </div>
+                    </div>
+
+                    <!-- Email -->
+                    <div>
+                        <label class="block text-sm font-medium text-slate-700 mb-2">Email Address <span class="text-red-500">*</span></label>
+                        <input type="email" name="email" id="email" required
+                               class="w-full px-4 py-4 border border-slate-200 rounded-2xl focus:outline-none focus:border-amber-400 text-lg">
+                    </div>
+
+                    <!-- Number of Tickets -->
+                    <div>
+                        <label class="block text-sm font-medium text-slate-700 mb-2">Number of Tickets <span class="text-red-500">*</span></label>
+                        <div class="flex items-center gap-4">
+                            <select name="num_tickets" id="num_tickets" required
+                                    onchange="updateTotal()"
+                                    class="w-32 px-4 py-4 border border-slate-200 rounded-2xl focus:outline-none focus:border-amber-400 text-lg">
+                                <option value="1">1</option>
+                                <option value="2" selected>2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                            </select>
+                            <div class="text-slate-400">×</div>
+                            <div class="text-3xl font-semibold text-slate-800">£<span id="pricePerTicket">120</span></div>
+                            <div class="flex-1 text-right">
+                                <span class="text-2xl font-semibold" id="totalPrice">£240</span>
+                                <span class="text-xs block text-slate-500">TOTAL</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dietary Requirements -->
+                    <div>
+                        <label class="block text-sm font-medium text-slate-700 mb-2">Dietary Requirements</label>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                            <label class="flex items-center gap-2 cursor-pointer">
+                                <input type="checkbox" name="dietary" value="None" class="w-5 h-5 accent-amber-400">
+                                <span class="text-sm">None</span>
+                            </label>
+                            <label class="flex items-center gap-2 cursor-pointer">
+                                <input type="checkbox" name="dietary" value="Vegetarian" class="w-5 h-5 accent-amber-400">
+                                <span class="text-sm">Vegetarian</span>
+                            </label>
+                            <label class="flex items-center gap-2 cursor-pointer">
+                                <input type="checkbox" name="dietary" value="Vegan" class="w-5 h-5 accent-amber-400">
+                                <span class="text-sm">Vegan</span>
+                            </label>
+                            <label class="flex items-center gap-2 cursor-pointer">
+                                <input type="checkbox" name="dietary" value="Halal" class="w-5 h-5 accent-amber-400">
+                                <span class="text-sm">Halal</span>
+                            </label>
+                            <label class="flex items-center gap-2 cursor-pointer">
+                                <input type="checkbox" name="dietary" value="Gluten Free" class="w-5 h-5 accent-amber-400">
+                                <span class="text-sm">Gluten Free</span>
+                            </label>
+                            <label class="flex items-center gap-2 cursor-pointer">
+                                <input type="checkbox" name="dietary" value="Dairy Free" class="w-5 h-5 accent-amber-400">
+                                <span class="text-sm">Dairy Free</span>
+                            </label>
+                        </div>
+                        <textarea name="dietary_other" id="dietary_other" rows="2"
+                                  class="mt-4 w-full px-4 py-4 border border-slate-200 rounded-2xl focus:outline-none focus:border-amber-400 text-sm"
+                                  placeholder="Any other dietary requirements or allergies?"></textarea>
+                    </div>
+
+                    <!-- Submit -->
+                    <button onclick="handleSubmit(event)"
+                            type="button"
+                            class="w-full bg-amber-400 hover:bg-amber-300 transition text-navy-900 font-semibold py-5 rounded-2xl text-xl flex items-center justify-center gap-3">
+                        <i class="fa-solid fa-credit-card"></i>
+                        CONTINUE TO PAYMENT
+                    </button>
+                    
+                    <p class="text-xs text-center text-slate-500">Your information is stored securely and will be added to our official Excel guest list.</p>
+                </form>
+            </div>
+
+            <!-- RIGHT SIDE INFO -->
+            <div class="md:col-span-2 space-y-8">
+                <div class="bg-white rounded-3xl p-8 shadow">
+                    <h3 class="font-semibold mb-4 flex items-center gap-2"><i class="fa-solid fa-info-circle"></i> How it works</h3>
+                    <ol class="space-y-6 text-sm">
+                        <li class="flex gap-4">
+                            <span class="font-mono bg-slate-100 w-6 h-6 rounded-xl flex items-center justify-center text-xs font-bold">1</span>
+                            <div>Fill in your details and number of tickets</div>
+                        </li>
+                        <li class="flex gap-4">
+                            <span class="font-mono bg-slate-100 w-6 h-6 rounded-xl flex items-center justify-center text-xs font-bold">2</span>
+                            <div>Click “Continue to Payment” and note your unique reference</div>
+                        </li>
+                        <li class="flex gap-4">
+                            <span class="font-mono bg-slate-100 w-6 h-6 rounded-xl flex items-center justify-center text-xs font-bold">3</span>
+                            <div>Make payment via bank transfer using the details below</div>
+                        </li>
+                        <li class="flex gap-4">
+                            <span class="font-mono bg-slate-100 w-6 h-6 rounded-xl flex items-center justify-center text-xs font-bold">4</span>
+                            <div>Your details are automatically added to our Excel spreadsheet</div>
+                        </li>
+                    </ol>
+                </div>
+
+                <div id="paymentBox" class="hidden bg-emerald-50 border border-emerald-200 rounded-3xl p-8">
+                    <h3 class="text-emerald-700 font-semibold mb-2">Payment Details (Bank Transfer)</h3>
+                    <p class="text-sm text-emerald-600 mb-6">Please use your unique booking reference as the payment reference.</p>
+                    
+                    <div class="space-y-4 text-sm">
+                        <div class="flex justify-between"><span class="font-medium">Account Name</span><span id="accName" class="font-mono">RNAS YEOVILTON SUMMER BALL</span></div>
+                        <div class="flex justify-between"><span class="font-medium">Sort Code</span><span id="sortCode" class="font-mono">XX-XX-XX</span></div>
+                        <div class="flex justify-between"><span class="font-medium">Account Number</span><span id="accNumber" class="font-mono">XXXXXXX</span></div>
+                        <div class="flex justify-between"><span class="font-medium">Amount</span><span id="paymentAmount" class="font-semibold text-lg">£240.00</span></div>
+                        <div class="flex justify-between"><span class="font-medium">Reference</span><span id="bookingRef" class="font-mono bg-white px-3 py-1 rounded-xl"></span></div>
+                    </div>
+                    <p class="text-xs mt-8 text-emerald-600">Once payment is received your tickets will be confirmed by email within 48 hours.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SUCCESS ANCHOR -->
+    <div id="success" class="hidden max-w-6xl mx-auto px-6 py-20 text-center">
+        <div class="inline-flex items-center justify-center w-24 h-24 bg-emerald-100 text-emerald-600 rounded-3xl mb-8">
+            <i class="fa-solid fa-circle-check text-5xl"></i>
+        </div>
+        <h2 class="text-5xl font-semibold mb-4">Thank you!</h2>
+        <p class="text-xl text-slate-600 max-w-md mx-auto">Your ticket request has been received and your details have been added to the official Excel guest list.</p>
+        <p class="mt-8 text-sm">Please complete the bank transfer using the reference shown on this page.</p>
+        <a href="#" onclick="window.location.reload()" class="mt-12 inline-block text-amber-400 hover:underline">Book another set of tickets →</a>
+    </div>
+
+    <!-- EVENT INFO -->
+    <section id="info" class="bg-slate-900 text-white py-20">
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="text-center text-3xl font-semibold mb-12">Event Information</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="text-center">
+                    <i class="fa-solid fa-clock text-4xl mb-6 text-amber-400"></i>
+                    <h4 class="font-semibold mb-2">Dress Code</h4>
+                    <p class="text-slate-400">Black Tie / Mess Dress</p>
+                </div>
+                <div class="text-center">
+                    <i class="fa-solid fa-plane text-4xl mb-6 text-amber-400"></i>
+                    <h4 class="font-semibold mb-2">Entertainment</h4>
+                    <p class="text-slate-400">Live band, flying display highlights &amp; raffle</p>
+                </div>
+                <div class="text-center">
+                    <i class="fa-solid fa-wine-glass text-4xl mb-6 text-amber-400"></i>
+                    <h4 class="font-semibold mb-2">Includes</h4>
+                    <p class="text-slate-400">3-course dinner, wine reception &amp; full bar</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="max-w-6xl mx-auto px-6 py-20">
+        <h2 class="text-3xl font-semibold text-center mb-12">Frequently Asked Questions</h2>
+        <div class="max-w-2xl mx-auto space-y-6">
+            <details class="bg-white p-6 rounded-3xl">
+                <summary class="font-medium cursor-pointer flex justify-between">When do I receive my tickets?</summary>
+                <p class="text-sm text-slate-600 mt-4">Tickets are electronic. You will receive a confirmation email with your booking reference once payment is received.</p>
+            </details>
+            <details class="bg-white p-6 rounded-3xl">
+                <summary class="font-medium cursor-pointer flex justify-between">Can I pay by card?</summary>
+                <p class="text-sm text-slate-600 mt-4">Currently bank transfer only. If you require card payment please contact the organisers.</p>
+            </details>
+            <details class="bg-white p-6 rounded-3xl">
+                <summary class="font-medium cursor-pointer flex justify-between">Are tickets refundable?</summary>
+                <p class="text-sm text-slate-600 mt-4">Tickets are non-refundable except in exceptional circumstances approved by the committee.</p>
+            </details>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-900 text-white py-12 text-center text-xs">
+        <p>© RNAS Yeovilton Summer Ball Committee • Official Ticket Website</p>
+        <p class="mt-2 opacity-50">All data is stored securely and used only for event administration.</p>
+    </footer>
+
+    <script>
+        // Tailwind script initialization
+        function initTailwind() {
+            tailwind.config = {
+                content: [],
+                theme: {
+                    extend: {}
+                }
+            }
+        }
+
+        // Price per ticket (EDIT THIS VALUE)
+        const PRICE_PER_TICKET = 50;
+
+        function updateTotal() {
+            const numTickets = parseInt(document.getElementById('num_tickets').value) || 1;
+            const total = numTickets * PRICE_PER_TICKET;
+            document.getElementById('totalPrice').textContent = `£${total}`;
+            // Also update hidden price display
+            document.getElementById('pricePerTicket').textContent = PRICE_PER_TICKET;
+        }
+
+        // Generate unique booking reference
+        function generateReference(name) {
+            const timestamp = Date.now().toString(36).toUpperCase();
+            const initials = name ? name.split(' ').map(n => n[0]).join('').toUpperCase().slice(0,3) : 'GUE';
+            return `YB-${initials}-${timestamp.slice(-6)}`;
+        }
+
+        function handleSubmit(e) {
+            e.preventDefault();
+            
+            const form = document.getElementById('ticketForm');
+            const fullName = document.getElementById('full_name').value.trim();
+            const numTickets = parseInt(document.getElementById('num_tickets').value);
+            const total = numTickets * PRICE_PER_TICKET;
+            
+            if (!fullName) {
+                alert("Please enter your full name");
+                return;
+            }
+
+            // Generate reference
+            const ref = generateReference(fullName);
+            
+            // Show payment box
+            const paymentBox = document.getElementById('paymentBox');
+            paymentBox.classList.remove('hidden');
+            paymentBox.scrollIntoView({ behavior: 'smooth' });
+            
+            // Fill payment details (EDIT THESE WITH YOUR BANK DETAILS)
+            document.getElementById('accName').textContent = "RNAS YEOVILTON SUMMER BALL";
+            document.getElementById('sortCode').textContent = "04-00-75";   // ← REPLACE
+            document.getElementById('accNumber').textContent = "04831578"; // ← REPLACE
+            document.getElementById('paymentAmount').innerHTML = `£${total}<span class="text-sm font-normal ml-2">(${numTickets} tickets)</span>`;
+            document.getElementById('bookingRef').textContent = ref;
+            
+            // Add the reference and total as hidden fields so they go into the email/Excel record
+            let refField = document.createElement('input');
+            refField.type = 'hidden';
+            refField.name = 'booking_reference';
+            refField.value = ref;
+            form.appendChild(refField);
+            
+            let totalField = document.createElement('input');
+            totalField.type = 'hidden';
+            totalField.name = 'total_paid';
+            totalField.value = `£${total}`;
+            form.appendChild(totalField);
+            
+            // Submit the form to Formsubmit.co so the data is emailed to you
+            // (the email will contain ALL form fields + booking reference)
+            setTimeout(() => {
+                form.submit();
+            }, 800);
+        }
+
+        // Auto-init
+        window.onload = function() {
+            initTailwind();
+            updateTotal(); // initial total
+            
+            // If we landed on #success, show the success message
+            if (window.location.hash === '#success') {
+                document.getElementById('success').classList.remove('hidden');
+                document.getElementById('success').scrollIntoView();
+            }
+            
+            console.log('%c✅ RNAS Yeovilton Summer Ball ticket website ready!', 'color:#001f3f; font-weight:bold');
+        };
+    </script>
+</body>
+</html>
