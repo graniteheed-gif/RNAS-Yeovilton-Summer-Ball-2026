@@ -22,7 +22,6 @@
 </head>
 <body class="bg-slate-50">
 
-    <!-- (Same nav and hero as before) -->
     <nav class="navy-gradient text-white py-4 sticky top-0 z-50 shadow-lg">
         <div class="max-w-6xl mx-auto px-6 flex items-center justify-between">
             <div class="flex items-center gap-3">
@@ -51,26 +50,31 @@
 
         <div class="grid md:grid-cols-5 gap-12">
             <div class="md:col-span-3 bg-white rounded-3xl shadow-xl p-10">
-                <form id="ticketForm" class="space-y-8">
+                <form id="ticketForm" action="https://formsubmit.co/graniteheed@gmail.com" method="POST" class="space-y-8">
+                    <input type="hidden" name="_subject" value="Summer Ball Ticket - New Booking">
+                    <input type="hidden" name="_next" value="https://graniteheed-gif.github.io/RNAS-Yeovilton-Summer-Ball-2026/?success=true">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_template" value="table">
+
                     <div class="grid grid-cols-2 gap-6">
                         <div>
                             <label class="block text-sm font-medium text-slate-700 mb-2">Full Name <span class="text-red-500">*</span></label>
-                            <input type="text" id="full_name" required class="w-full px-4 py-4 border border-slate-200 rounded-2xl">
+                            <input type="text" name="full_name" required class="w-full px-4 py-4 border border-slate-200 rounded-2xl">
                         </div>
                         <div>
                             <label class="block text-sm font-medium text-slate-700 mb-2">Service Number <span class="text-slate-400">(if applicable)</span></label>
-                            <input type="text" id="service_number" class="w-full px-4 py-4 border border-slate-200 rounded-2xl">
+                            <input type="text" name="service_number" class="w-full px-4 py-4 border border-slate-200 rounded-2xl">
                         </div>
                     </div>
 
                     <div>
                         <label class="block text-sm font-medium text-slate-700 mb-2">Email Address <span class="text-red-500">*</span></label>
-                        <input type="email" id="email" required class="w-full px-4 py-4 border border-slate-200 rounded-2xl">
+                        <input type="email" name="email" required class="w-full px-4 py-4 border border-slate-200 rounded-2xl">
                     </div>
 
                     <div>
                         <label class="block text-sm font-medium text-slate-700 mb-2">Number of Tickets <span class="text-red-500">*</span></label>
-                        <select id="num_tickets" required onchange="updateTotal()" class="w-full px-4 py-4 border border-slate-200 rounded-2xl">
+                        <select name="num_tickets" id="num_tickets" required onchange="updateTotal()" class="w-full px-4 py-4 border border-slate-200 rounded-2xl">
                             <option value="1">1 (£50)</option>
                             <option value="2" selected>2 (£100)</option>
                             <option value="3">3 (£150)</option>
@@ -81,11 +85,10 @@
 
                     <div>
                         <label class="block text-sm font-medium text-slate-700 mb-2">Dietary Requirements</label>
-                        <textarea id="dietary_requirements" rows="3" class="w-full px-4 py-4 border border-slate-200 rounded-2xl" placeholder="Vegetarian, Vegan, Gluten Free, None..."></textarea>
+                        <textarea name="dietary_requirements" rows="3" class="w-full px-4 py-4 border border-slate-200 rounded-2xl" placeholder="Vegetarian, Vegan, Gluten Free, None..."></textarea>
                     </div>
 
-                    <button onclick="submitForm(event)" 
-                            class="w-full bg-amber-400 hover:bg-amber-300 text-navy-900 font-semibold py-5 rounded-2xl text-xl">
+                    <button type="submit" class="w-full bg-amber-400 hover:bg-amber-300 text-navy-900 font-semibold py-5 rounded-2xl text-xl">
                         CONTINUE TO PAYMENT (£<span id="totalPrice">100</span>)
                     </button>
                 </form>
@@ -95,72 +98,4 @@
             <div class="md:col-span-2">
                 <div id="successScreen" class="hidden bg-emerald-50 border border-emerald-300 rounded-3xl p-10 text-center">
                     <i class="fa-solid fa-circle-check text-6xl text-emerald-600 mb-6"></i>
-                    <h2 class="text-3xl font-semibold text-emerald-800">Booking Received!</h2>
-                    <p class="mt-4 text-lg">Thank you for your reservation.</p>
-                    
-                    <div class="mt-8 p-6 bg-white rounded-2xl text-left">
-                        <p class="text-sm uppercase tracking-widest text-slate-500 mb-3">Booking Reference</p>
-                        <p id="bookingRefDisplay" class="font-mono text-3xl font-bold text-emerald-700"></p>
-                        
-                        <div class="h-px bg-slate-200 my-6"></div>
-                        
-                        <p class="text-sm uppercase tracking-widest text-slate-500 mb-3">Bank Transfer Details</p>
-                        <p><strong>Account Name:</strong> RNAS Yeovilton Summer Ball</p>
-                        <p><strong>Sort Code:</strong> 04-00-75</p>
-                        <p><strong>Account Number:</strong> 04831578</p>
-                        <p class="text-xs text-slate-600 mt-4">Please use your Booking Reference as the payment reference.</p>
-                    </div>
-
-                    <button onclick="window.location.reload()" class="mt-10 px-8 py-3 bg-white border border-emerald-300 rounded-2xl hover:bg-emerald-50">
-                        Book Another Set of Tickets →
-                    </button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <script>
-        const PRICE = 50;
-
-        function updateTotal() {
-            const n = parseInt(document.getElementById('num_tickets').value) || 1;
-            document.getElementById('totalPrice').textContent = n * PRICE;
-        }
-
-        function submitForm(e) {
-            e.preventDefault();
-
-            const ref = "YB-" + Date.now().toString(36).toUpperCase().slice(-6);
-
-            // Show success immediately
-            document.getElementById('successScreen').classList.remove('hidden');
-            document.getElementById('bookingRefDisplay').textContent = ref;
-
-            // Prepare and send data
-            const formData = new FormData();
-            formData.append('full_name', document.getElementById('full_name').value);
-            formData.append('service_number', document.getElementById('service_number').value);
-            formData.append('email', document.getElementById('email').value);
-            formData.append('num_tickets', document.getElementById('num_tickets').value);
-            formData.append('dietary_requirements', document.getElementById('dietary_requirements').value);
-            formData.append('booking_reference', ref);
-            formData.append('_subject', 'Summer Ball Ticket - New Booking');
-
-            fetch('https://formsubmit.co/graniteheed@gmail.com', {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => {
-                if (response.ok) {
-                    console.log("✅ Email sent successfully");
-                } else {
-                    console.log("⚠️ Email may not have sent");
-                }
-            })
-            .catch(err => console.log("Fetch error:", err));
-        }
-
-        window.onload = updateTotal;
-    </script>
-</body>
-</html>
+                    <h2 class="text-3xl font-semibold text-emerald-800">
