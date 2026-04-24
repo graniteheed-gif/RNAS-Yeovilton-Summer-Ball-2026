@@ -27,12 +27,11 @@
         </div>
     </nav>
 
-    <header class="hero-bg text-white py-24 md:py-32" style="background-image: linear-gradient(rgba(0,31,63,0.75), rgba(0,31,63,0.85)), url('https://i.imgur.com/sherlynot.jpg'); background-size: cover; background-position: center;">
+    <header class="hero-bg text-white py-24 md:py-32" style="background-image: linear-gradient(rgba(0,31,63,0.75), rgba(0,31,63,0.85)), url('https://news.cision.com/defence-infrastructure-organisation/r/dio-delivers-somerset-military-accommodation-ahead-of-time,c9511918/@@images/hero.jpg'); background-size: cover;">
         <div class="max-w-6xl mx-auto px-6 text-center">
             <h2 class="heading-font text-5xl md:text-6xl leading-none tracking-tighter mb-4">RNAS Yeovilton<br>Summer Ball 2026</h2>
             <p class="text-3xl text-amber-400 font-medium">Country Themed Party</p>
             <p class="mt-4 text-xl">The Wardroom • Saturday 11 July 2026</p>
-            <p class="mt-6 text-5xl font-bold text-amber-300">FREE WETS!</p>
         </div>
     </header>
 
@@ -107,12 +106,6 @@
                         <p><strong>Account Number:</strong> 04831578</p>
                     </div>
 
-                    <!-- QR Code -->
-                    <div class="mt-8">
-                        <p class="text-sm uppercase tracking-widest text-slate-500 mb-2">Scan to return to booking page</p>
-                        <img id="qrCode" src="" alt="QR Code" class="mx-auto border-2 border-emerald-200 rounded-xl">
-                    </div>
-
                     <button onclick="window.location.reload()" class="mt-10 px-8 py-3 bg-white border border-emerald-300 rounded-2xl hover:bg-emerald-50">
                         Book Another Set →
                     </button>
@@ -144,10 +137,6 @@
                 const ref = "YB-" + Date.now().toString(36).toUpperCase().slice(-6);
                 document.getElementById('successScreen').classList.remove('hidden');
                 document.getElementById('bookingRefDisplay').textContent = ref;
-
-                // Generate QR code linking to the website
-                const url = "https://graniteheed-gif.github.io/RNAS-Yeovilton-Summer-Ball-2026";
-                document.getElementById('qrCode').src = `https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=${encodeURIComponent(url)}`;
             }
         };
     </script>
