@@ -56,7 +56,6 @@
                     <input type="hidden" name="_captcha" value="false">
                     <input type="hidden" name="_template" value="table">
 
-                    <!-- All fields -->
                     <div class="grid grid-cols-2 gap-6">
                         <div>
                             <label class="block text-sm font-medium text-slate-700 mb-2">Full Name <span class="text-red-500">*</span></label>
@@ -126,14 +125,5 @@
         window.onload = function() {
             updateTotal();
 
-            const urlParams = new URLSearchParams(window.location.search);
-            if (urlParams.get('success') === 'true') {
-                // Generate reference on success page
-                const ref = "YB-" + Date.now().toString(36).toUpperCase().slice(-6);
-                document.getElementById('successScreen').classList.remove('hidden');
-                document.getElementById('bookingRefDisplay').textContent = ref;
-            }
-        };
-    </script>
-</body>
-</html>
+            // Check if we came back from Formsubmit
+            if (
