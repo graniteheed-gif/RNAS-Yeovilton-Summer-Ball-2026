@@ -122,18 +122,23 @@
             document.getElementById('totalPrice').textContent = n * PRICE;
         }
 
-        // Generate reference BEFORE the form is submitted
         document.getElementById('ticketForm').addEventListener('submit', function() {
             const ref = "YB-" + Date.now().toString(36).toUpperCase().slice(-6);
             
-            const refInput = document.createElement('input');
-            refInput.type = 'hidden';
-            refInput.name = 'booking_reference';
-            refInput.value = ref;
-            this.appendChild(refInput);
+            // Force add the booking reference
+            let refField = this.querySelector('input[name="booking_reference"]');
+            if (!refField) {
+                refField = document.createElement('input');
+                refField.type = 'hidden';
+                refField.name = 'booking_reference';
+                this.appendChild(refField);
+            }
+            refField.value = ref;
+
+            // Also add it as a visible field for debugging (you can remove later)
+            // console.log("Reference added:", ref);
         });
 
-        // Show success screen when redirected back
         window.onload = function() {
             updateTotal();
             if (window.location.search.includes('success=true')) {
