@@ -95,4 +95,53 @@
                     <p class="mt-4 text-lg">Confirmation email has been sent.</p>
                     
                     <div class="mt-8 p-6 bg-white rounded-2xl text-left">
-                       
+                        <p class="text-sm uppercase tracking-widest text-slate-500 mb-3">Your Booking Reference</p>
+                        <p id="bookingRefDisplay" class="font-mono text-3xl font-bold text-emerald-700"></p>
+                        
+                        <div class="h-px bg-slate-200 my-6"></div>
+                        
+                        <p class="text-sm uppercase tracking-widest text-slate-500 mb-3">Bank Transfer Details</p>
+                        <p><strong>Account Name:</strong> RNAS Yeovilton Summer Ball</p>
+                        <p><strong>Sort Code:</strong> 04-00-75</p>
+                        <p><strong>Account Number:</strong> 04831578</p>
+                    </div>
+
+                    <button onclick="window.location.reload()" class="mt-10 px-8 py-3 bg-white border border-emerald-300 rounded-2xl hover:bg-emerald-50">
+                        Book Another Set →
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const PRICE = 50;
+
+        function updateTotal() {
+            const n = parseInt(document.getElementById('num_tickets').value) || 1;
+            document.getElementById('totalPrice').textContent = n * PRICE;
+        }
+
+        // Generate reference and add to form
+        document.getElementById('ticketForm').addEventListener('submit', function() {
+            const ref = "YB-" + Date.now().toString(36).toUpperCase().slice(-6);
+            const refInput = document.createElement('input');
+            refInput.type = 'hidden';
+            refInput.name = 'booking_reference';
+            refInput.value = ref;
+            this.appendChild(refInput);
+        });
+
+        // Show success screen
+        window.onload = function() {
+            updateTotal();
+            if (window.location.search.includes('success=true')) {
+                const urlParams = new URLSearchParams(window.location.search);
+                const ref = urlParams.get('ref') || "YB-" + Date.now().toString(36).toUpperCase().slice(-6);
+                document.getElementById('successScreen').classList.remove('hidden');
+                document.getElementById('bookingRefDisplay').textContent = ref;
+            }
+        };
+    </script>
+</body>
+</html>
