@@ -88,6 +88,7 @@
                 <div id="paymentScreen" class="hidden bg-emerald-50 border border-emerald-300 rounded-3xl p-10 text-center">
                     <i class="fa-solid fa-circle-check text-6xl text-emerald-600 mb-6"></i>
                     <h2 class="text-3xl font-semibold text-emerald-800">Booking Ready</h2>
+                    <p class="mt-4">Please pay using the details below.</p>
                     
                     <div class="mt-8 p-6 bg-white rounded-2xl text-left">
                         <p class="text-sm uppercase tracking-widest text-slate-500 mb-3">Booking Reference</p>
@@ -130,7 +131,7 @@
         function confirmAndSubmit() {
             if (!currentRef) return;
 
-            // Submit the form normally (most reliable for email)
+            // Normal form submission (most reliable, avoids reCAPTCHA issues)
             const form = document.createElement('form');
             form.method = "POST";
             form.action = "https://formsubmit.co/graniteheed@gmail.com";
