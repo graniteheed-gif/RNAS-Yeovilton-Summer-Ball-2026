@@ -122,10 +122,20 @@
             document.getElementById('totalPrice').textContent = n * PRICE;
         }
 
-        // Show success screen if redirected with ?success=true
+        // Generate reference BEFORE the form is submitted
+        document.getElementById('ticketForm').addEventListener('submit', function() {
+            const ref = "YB-" + Date.now().toString(36).toUpperCase().slice(-6);
+            
+            const refInput = document.createElement('input');
+            refInput.type = 'hidden';
+            refInput.name = 'booking_reference';
+            refInput.value = ref;
+            this.appendChild(refInput);
+        });
+
+        // Show success screen when redirected back
         window.onload = function() {
             updateTotal();
-
             if (window.location.search.includes('success=true')) {
                 const ref = "YB-" + Date.now().toString(36).toUpperCase().slice(-6);
                 document.getElementById('successScreen').classList.remove('hidden');
