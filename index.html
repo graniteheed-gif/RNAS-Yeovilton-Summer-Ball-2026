@@ -11,9 +11,9 @@
         body { font-family: 'Inter', system_ui, sans-serif; }
         .heading-font { font-family: 'Playfair Display', sans-serif; }
         .navy-gradient { background: linear-gradient(135deg, #001f3f 0%, #003366 100%); }
-        
+       
         .hero-bg {
-            background-image: linear-gradient(rgba(0,31,63,0.75), rgba(0,31,63,0.85)), 
+            background-image: linear-gradient(rgba(0,31,63,0.75), rgba(0,31,63,0.85)),
                               url('https://files.oaiusercontent.com/file-j80XK?se=2026-04-25T00%3A00%3A00Z&sp=r&sv=2024-08-04&sr=b&rscc=max-age%3D3628800%2C%20immutable&rscd=attachment%3B%20filename%3DSummer%20Ball%20Poster.jpg&sig=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx');
             background-size: cover;
             background-position: center;
@@ -33,7 +33,6 @@
             </div>
         </div>
     </nav>
-
     <header class="hero-bg text-white py-24 md:py-32">
         <div class="max-w-6xl mx-auto px-6 text-center">
             <h2 class="heading-font text-5xl md:text-6xl leading-none tracking-tighter mb-4">RNAS Yeovilton<br>Summer Ball 2026</h2>
@@ -41,7 +40,6 @@
             <p class="mt-4 text-xl">The Wardroom • Saturday 11 July 2026</p>
         </div>
     </header>
-
     <section id="tickets" class="max-w-6xl mx-auto px-6 py-16">
         <div class="text-center mb-12">
             <h2 class="text-4xl font-semibold mb-3">Reserve Your Tickets</h2>
@@ -84,19 +82,18 @@
                     </button>
                 </form>
             </div>
-
             <!-- PAYMENT / SUCCESS SCREEN -->
             <div class="md:col-span-2">
                 <div id="paymentScreen" class="hidden bg-emerald-50 border border-emerald-300 rounded-3xl p-10 text-center">
                     <i class="fa-solid fa-circle-check text-6xl text-emerald-600 mb-6"></i>
                     <h2 class="text-3xl font-semibold text-emerald-800">Booking Ready</h2>
-                   
+                  
                     <div class="mt-8 p-6 bg-white rounded-2xl text-left">
                         <p class="text-sm uppercase tracking-widest text-slate-500 mb-3">Booking Reference</p>
                         <p id="bookingRefDisplay" class="font-mono text-3xl font-bold text-emerald-700"></p>
-                       
+                      
                         <div class="h-px bg-slate-200 my-6"></div>
-                       
+                      
                         <p class="text-sm uppercase tracking-widest text-slate-500 mb-3">Bank Transfer Details</p>
                         <p><strong>Account Name:</strong> Richard White</p>
                         <p><strong>Sort Code:</strong> 04-00-75</p>
@@ -104,13 +101,12 @@
                     </div>
                     <button onclick="confirmAndSubmit()"
                             class="mt-10 w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-5 rounded-2xl text-xl">
-                        ✅ I HAVE MADE THE PAYMENT
+                        Press this once you have paid to book your tickets
                     </button>
                 </div>
             </div>
         </div>
     </section>
-
     <script>
         const PRICE = 50;
         let currentRef = "";
