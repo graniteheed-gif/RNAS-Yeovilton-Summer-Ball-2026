@@ -11,6 +11,13 @@
         body { font-family: 'Inter', system_ui, sans-serif; }
         .heading-font { font-family: 'Playfair Display', sans-serif; }
         .navy-gradient { background: linear-gradient(135deg, #001f3f 0%, #003366 100%); }
+        
+        .hero-bg {
+            background-image: linear-gradient(rgba(0, 31, 63, 0.75), rgba(0, 31, 63, 0.85)), 
+                              url('https://news.cision.com/defence-infrastructure-organisation/r/dio-delivers-somerset-military-accommodation-ahead-of-time,c9511918/@@images/hero.jpg');
+            background-size: cover;
+            background-position: center;
+        }
     </style>
 </head>
 <body class="bg-slate-50">
@@ -27,40 +34,51 @@
         </div>
     </nav>
 
+    <!-- Hero -->
+    <header class="hero-bg text-white py-24 md:py-32">
+        <div class="max-w-6xl mx-auto px-6 text-center">
+            <h2 class="heading-font text-5xl md:text-6xl leading-none tracking-tighter mb-4">RNAS Yeovilton<br>Summer Ball 2026</h2>
+            <p class="text-3xl text-amber-400 font-medium">Country Themed Party</p>
+            <p class="mt-4 text-xl">The Wardroom • Saturday 27 June 2026</p>
+            <a href="#tickets" class="mt-10 inline-block bg-amber-400 text-navy-900 font-semibold px-10 py-4 rounded-2xl text-xl">Buy Tickets - £50</a>
+        </div>
+    </header>
+
     <section id="tickets" class="max-w-6xl mx-auto px-6 py-16">
         <div class="text-center mb-12">
             <h2 class="text-4xl font-semibold mb-3">Reserve Your Tickets</h2>
-            <p class="text-slate-600">£50 per person • The Wardroom • Country Themed Party</p>
+            <p class="text-slate-600">£50 per person • Country Themed Party at The Wardroom</p>
         </div>
 
         <div class="grid md:grid-cols-5 gap-12">
+            <!-- FORM -->
             <div class="md:col-span-3 bg-white rounded-3xl shadow-xl p-10">
                 <form id="ticketForm" action="https://formsubmit.co/graniteheed@gmail.com" method="POST" class="space-y-8">
-                    
                     <input type="hidden" name="_subject" value="Summer Ball Ticket - New Booking">
                     <input type="hidden" name="_next" value="https://graniteheed-gif.github.io/RNAS-Yeovilton-Summer-Ball-2026/#success">
                     <input type="hidden" name="_captcha" value="false">
                     <input type="hidden" name="_template" value="table">
 
+                    <!-- Form fields -->
                     <div class="grid grid-cols-2 gap-6">
                         <div>
                             <label class="block text-sm font-medium text-slate-700 mb-2">Full Name <span class="text-red-500">*</span></label>
-                            <input type="text" name="full_name" required class="w-full px-4 py-4 border border-slate-200 rounded-2xl focus:outline-none focus:border-amber-400 text-lg">
+                            <input type="text" name="full_name" required class="w-full px-4 py-4 border border-slate-200 rounded-2xl focus:outline-none focus:border-amber-400">
                         </div>
                         <div>
-                            <label class="block text-sm font-medium text-slate-700 mb-2">Service Number <span class="text-slate-400 text-xs">(if applicable)</span></label>
-                            <input type="text" name="service_number" class="w-full px-4 py-4 border border-slate-200 rounded-2xl focus:outline-none focus:border-amber-400 text-lg">
+                            <label class="block text-sm font-medium text-slate-700 mb-2">Service Number <span class="text-slate-400">(if applicable)</span></label>
+                            <input type="text" name="service_number" class="w-full px-4 py-4 border border-slate-200 rounded-2xl focus:outline-none focus:border-amber-400">
                         </div>
                     </div>
 
                     <div>
                         <label class="block text-sm font-medium text-slate-700 mb-2">Email Address <span class="text-red-500">*</span></label>
-                        <input type="email" name="email" required class="w-full px-4 py-4 border border-slate-200 rounded-2xl focus:outline-none focus:border-amber-400 text-lg">
+                        <input type="email" name="email" required class="w-full px-4 py-4 border border-slate-200 rounded-2xl focus:outline-none focus:border-amber-400">
                     </div>
 
                     <div>
                         <label class="block text-sm font-medium text-slate-700 mb-2">Number of Tickets <span class="text-red-500">*</span></label>
-                        <select name="num_tickets" id="num_tickets" required onchange="updateTotal()" class="w-full px-4 py-4 border border-slate-200 rounded-2xl focus:outline-none focus:border-amber-400 text-lg">
+                        <select name="num_tickets" id="num_tickets" required onchange="updateTotal()" class="w-full px-4 py-4 border border-slate-200 rounded-2xl">
                             <option value="1">1 (£50)</option>
                             <option value="2" selected>2 (£100)</option>
                             <option value="3">3 (£150)</option>
@@ -71,7 +89,7 @@
 
                     <div>
                         <label class="block text-sm font-medium text-slate-700 mb-2">Dietary Requirements</label>
-                        <textarea name="dietary_requirements" rows="3" class="w-full px-4 py-4 border border-slate-200 rounded-2xl focus:outline-none focus:border-amber-400" placeholder="e.g. Vegetarian, Vegan, Gluten Free, None..."></textarea>
+                        <textarea name="dietary_requirements" rows="3" class="w-full px-4 py-4 border border-slate-200 rounded-2xl" placeholder="Vegetarian, Vegan, Gluten Free, None..."></textarea>
                     </div>
 
                     <button onclick="handleSubmit(event)" type="button" 
@@ -81,7 +99,20 @@
                 </form>
             </div>
 
+            <!-- Payment Info -->
             <div class="md:col-span-2">
+                <div id="successMessage" class="hidden bg-emerald-50 border border-emerald-300 rounded-3xl p-10 text-center">
+                    <i class="fa-solid fa-circle-check text-6xl text-emerald-600 mb-6"></i>
+                    <h2 class="text-3xl font-semibold text-emerald-800">Thank You!</h2>
+                    <p class="mt-4 text-lg">Your booking has been received.</p>
+                    <div class="mt-8 p-6 bg-white rounded-2xl">
+                        <p class="text-sm text-slate-600">Booking Reference</p>
+                        <p id="showRef" class="font-mono text-2xl font-bold text-emerald-700"></p>
+                    </div>
+                    <p class="mt-8 text-sm text-slate-600">Please pay using bank transfer with the reference above.</p>
+                    <button onclick="window.location.reload()" class="mt-10 text-amber-600 hover:underline">Book More Tickets →</button>
+                </div>
+
                 <div id="paymentBox" class="hidden bg-emerald-50 border border-emerald-200 rounded-3xl p-8"></div>
             </div>
         </div>
@@ -97,25 +128,25 @@
 
         function handleSubmit(e) {
             e.preventDefault();
+            
             const form = document.getElementById('ticketForm');
             const ref = "YB-" + Date.now().toString(36).toUpperCase().slice(-6);
             
+            // Add reference to form
             const refField = document.createElement("input");
             refField.type = "hidden";
             refField.name = "booking_reference";
             refField.value = ref;
             form.appendChild(refField);
 
-            const box = document.getElementById('paymentBox');
-            box.classList.remove('hidden');
-            box.innerHTML = `
-                <h3 class="font-semibold mb-3">Thank You!</h3>
-                <p class="text-lg">Booking Reference: <strong>${ref}</strong></p>
-                <p class="text-sm mt-4">Please pay £<span id="payAmount"></span> by bank transfer using the reference above.</p>
-            `;
-            document.getElementById('payAmount').textContent = (parseInt(document.getElementById('num_tickets').value) * PRICE);
+            // Show success message
+            document.getElementById('successMessage').classList.remove('hidden');
+            document.getElementById('showRef').textContent = ref;
 
-            setTimeout(() => form.submit(), 800);
+            // Auto-submit the form after showing success
+            setTimeout(() => {
+                form.submit();
+            }, 1200);
         }
 
         window.onload = updateTotal;
