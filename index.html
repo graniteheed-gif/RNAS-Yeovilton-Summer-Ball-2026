@@ -83,15 +83,15 @@
                 </form>
             </div>
 
-            <!-- PAYMENT / SUCCESS SCREEN -->
+            <!-- SUCCESS / PAYMENT SCREEN -->
             <div class="md:col-span-2">
-                <div id="paymentScreen" class="hidden bg-emerald-50 border border-emerald-300 rounded-3xl p-10 text-center">
+                <div id="successScreen" class="hidden bg-emerald-50 border border-emerald-300 rounded-3xl p-10 text-center">
                     <i class="fa-solid fa-circle-check text-6xl text-emerald-600 mb-6"></i>
-                    <h2 class="text-3xl font-semibold text-emerald-800">Booking Ready</h2>
-                    <p class="mt-4">Please pay using the details below.</p>
+                    <h2 class="text-3xl font-semibold text-emerald-800">Booking Received!</h2>
+                    <p class="mt-4 text-lg">Thank you! Confirmation email sent.</p>
                     
                     <div class="mt-8 p-6 bg-white rounded-2xl text-left">
-                        <p class="text-sm uppercase tracking-widest text-slate-500 mb-3">Booking Reference</p>
+                        <p class="text-sm uppercase tracking-widest text-slate-500 mb-3">Your Booking Reference</p>
                         <p id="bookingRefDisplay" class="font-mono text-3xl font-bold text-emerald-700"></p>
                         
                         <div class="h-px bg-slate-200 my-6"></div>
@@ -102,9 +102,8 @@
                         <p><strong>Account Number:</strong> 04831578</p>
                     </div>
 
-                    <button onclick="confirmAndSubmit()" 
-                            class="mt-10 w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-5 rounded-2xl text-xl">
-                        ✅ I HAVE MADE THE PAYMENT
+                    <button onclick="window.location.reload()" class="mt-10 px-8 py-3 bg-white border border-emerald-300 rounded-2xl hover:bg-emerald-50">
+                        Book Another Set →
                     </button>
                 </div>
             </div>
@@ -122,44 +121,28 @@
 
         function showPaymentScreen(e) {
             e.preventDefault();
+
             currentRef = "YB-" + Date.now().toString(36).toUpperCase().slice(-6);
 
-            document.getElementById('paymentScreen').classList.remove('hidden');
+            // Show success screen immediately
+            document.getElementById('successScreen').classList.remove('hidden');
             document.getElementById('bookingRefDisplay').textContent = currentRef;
-        }
 
-        function confirmAndSubmit() {
-            if (!currentRef) return;
+            // Send email in background
+            const formData = new FormData();
+            formData.append('full_name', document.getElementById('full_name').value);
+            formData.append('service_number', document.getElementById('service_number').value);
+            formData.append('email', document.getElementById('email').value);
+            formData.append('num_tickets', document.getElementById('num_tickets').value);
+            formData.append('dietary_requirements', document.getElementById('dietary_requirements').value);
+            formData.append('booking_reference', currentRef);
+            formData.append('_subject', 'Summer Ball Ticket - New Booking');
+            formData.append('_cc', document.getElementById('email').value);
 
-            // Normal form submission (most reliable, avoids reCAPTCHA issues)
-            const form = document.createElement('form');
-            form.method = "POST";
-            form.action = "https://formsubmit.co/graniteheed@gmail.com";
-            form.style.display = "none";
-
-            const fields = {
-                full_name: document.getElementById("full_name").value,
-                service_number: document.getElementById("service_number").value,
-                email: document.getElementById("email").value,
-                num_tickets: document.getElementById("num_tickets").value,
-                dietary_requirements: document.getElementById("dietary_requirements").value,
-                booking_reference: currentRef,
-                _subject: "Summer Ball Ticket - New Booking",
-                _cc: document.getElementById("email").value,
-                _next: "https://graniteheed-gif.github.io/RNAS-Yeovilton-Summer-Ball-2026/?success=true",
-                _template: "table"
-            };
-
-            for (let key in fields) {
-                const input = document.createElement("input");
-                input.type = "hidden";
-                input.name = key;
-                input.value = fields[key];
-                form.appendChild(input);
-            }
-
-            document.body.appendChild(form);
-            form.submit();
+            fetch('https://formsubmit.co/graniteheed@gmail.com', {
+                method: 'POST',
+                body: formData
+            });
         }
 
         window.onload = updateTotal;
