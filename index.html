@@ -122,7 +122,7 @@
             document.getElementById('totalPrice').textContent = n * PRICE;
         }
 
-        // Generate reference once and add to form
+        // Generate reference once before form submits
         document.getElementById('ticketForm').addEventListener('submit', function() {
             const ref = "YB-" + Date.now().toString(36).toUpperCase().slice(-6);
             
@@ -133,7 +133,7 @@
             this.appendChild(refInput);
         });
 
-        // Show success screen
+        // Show success screen after redirect
         window.onload = function() {
             updateTotal();
             if (window.location.search.includes('success=true')) {
