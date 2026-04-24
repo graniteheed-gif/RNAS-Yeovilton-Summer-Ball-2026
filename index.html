@@ -97,7 +97,7 @@
                         <div class="h-px bg-slate-200 my-6"></div>
                         
                         <p class="text-sm uppercase tracking-widest text-slate-500 mb-3">Bank Transfer Details</p>
-                        <p><strong>Account Name:</strong> RNAS Yeovilton Summer Ball</p>
+                        <p><strong>Account Name:</strong> Richard White</p>
                         <p><strong>Sort Code:</strong> 04-00-75</p>
                         <p><strong>Account Number:</strong> 04831578</p>
                     </div>
@@ -132,7 +132,6 @@
         function confirmAndSubmit() {
             if (!currentRef) return;
 
-            // Create a hidden form and submit it normally (most reliable)
             const form = document.createElement('form');
             form.method = 'POST';
             form.action = 'https://formsubmit.co/graniteheed@gmail.com';
@@ -146,6 +145,7 @@
                 dietary_requirements: document.getElementById('dietary_requirements').value,
                 booking_reference: currentRef,
                 _subject: "Summer Ball Ticket - New Booking",
+                _cc: document.getElementById('email').value,
                 _next: "https://graniteheed-gif.github.io/RNAS-Yeovilton-Summer-Ball-2026/?success=true",
                 _template: "table"
             };
