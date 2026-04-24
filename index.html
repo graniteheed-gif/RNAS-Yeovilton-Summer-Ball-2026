@@ -122,9 +122,10 @@
             document.getElementById('totalPrice').textContent = n * PRICE;
         }
 
-        // Generate reference and add to form before submit
+        // Generate reference once before submit
         document.getElementById('ticketForm').addEventListener('submit', function() {
             const ref = "YB-" + Date.now().toString(36).toUpperCase().slice(-6);
+            
             const refInput = document.createElement('input');
             refInput.type = 'hidden';
             refInput.name = 'booking_reference';
