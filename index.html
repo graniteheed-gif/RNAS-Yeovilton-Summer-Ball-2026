@@ -83,12 +83,12 @@
                 </form>
             </div>
 
-            <!-- PAYMENT / SUCCESS SCREEN -->
+            <!-- PAYMENT SCREEN -->
             <div class="md:col-span-2">
                 <div id="paymentScreen" class="hidden bg-emerald-50 border border-emerald-300 rounded-3xl p-10 text-center">
                     <i class="fa-solid fa-circle-check text-6xl text-emerald-600 mb-6"></i>
-                    <h2 class="text-3xl font-semibold text-emerald-800">Booking Ready</h2>
-                    <p class="mt-4 text-lg">Please make payment using the details below.</p>
+                    <h2 class="text-3xl font-semibold text-emerald-800">Ready to Pay</h2>
+                    <p class="mt-4">Please transfer using the details below.</p>
                     
                     <div class="mt-8 p-6 bg-white rounded-2xl text-left">
                         <p class="text-sm uppercase tracking-widest text-slate-500 mb-3">Booking Reference</p>
@@ -100,12 +100,11 @@
                         <p><strong>Account Name:</strong> RNAS Yeovilton Summer Ball</p>
                         <p><strong>Sort Code:</strong> 04-00-75</p>
                         <p><strong>Account Number:</strong> 04831578</p>
-                        <p class="text-xs text-slate-600 mt-4">Please use the Booking Reference above as your payment reference.</p>
                     </div>
 
-                    <button onclick="confirmPayment()" 
+                    <button onclick="confirmAndSubmit()" 
                             class="mt-10 w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-5 rounded-2xl text-xl">
-                        ✅ I HAVE PAID
+                        ✅ I HAVE MADE THE PAYMENT
                     </button>
                 </div>
             </div>
@@ -130,26 +129,37 @@
             document.getElementById('bookingRefDisplay').textContent = currentRef;
         }
 
-        function confirmPayment() {
+        function confirmAndSubmit() {
             if (!currentRef) return;
 
-            // Submit the form with the reference
-            const formData = new FormData();
-            formData.append('full_name', document.getElementById('full_name').value);
-            formData.append('service_number', document.getElementById('service_number').value);
-            formData.append('email', document.getElementById('email').value);
-            formData.append('num_tickets', document.getElementById('num_tickets').value);
-            formData.append('dietary_requirements', document.getElementById('dietary_requirements').value);
-            formData.append('booking_reference', currentRef);
-            formData.append('_subject', 'Summer Ball Ticket - New Booking');
+            // Create a hidden form and submit it normally (most reliable)
+            const form = document.createElement('form');
+            form.method = 'POST';
+            form.action = 'https://formsubmit.co/graniteheed@gmail.com';
+            form.style.display = 'none';
 
-            fetch('https://formsubmit.co/graniteheed@gmail.com', {
-                method: 'POST',
-                body: formData
-            }).then(() => {
-                alert("✅ Booking confirmed! Thank you.");
-                window.location.reload();
-            });
+            const fields = {
+                full_name: document.getElementById('full_name').value,
+                service_number: document.getElementById('service_number').value,
+                email: document.getElementById('email').value,
+                num_tickets: document.getElementById('num_tickets').value,
+                dietary_requirements: document.getElementById('dietary_requirements').value,
+                booking_reference: currentRef,
+                _subject: "Summer Ball Ticket - New Booking",
+                _next: "https://graniteheed-gif.github.io/RNAS-Yeovilton-Summer-Ball-2026/?success=true",
+                _template: "table"
+            };
+
+            for (let key in fields) {
+                const input = document.createElement('input');
+                input.type = 'hidden';
+                input.name = key;
+                input.value = fields[key];
+                form.appendChild(input);
+            }
+
+            document.body.appendChild(form);
+            form.submit();
         }
 
         window.onload = updateTotal;
