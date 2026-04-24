@@ -116,30 +116,20 @@
 
     <script>
         const PRICE = 50;
-        let currentRef = "";
 
         function updateTotal() {
             const n = parseInt(document.getElementById('num_tickets').value) || 1;
             document.getElementById('totalPrice').textContent = n * PRICE;
         }
 
-        // Generate reference before submit
-        document.getElementById('ticketForm').addEventListener('submit', function() {
-            currentRef = "YB-" + Date.now().toString(36).toUpperCase().slice(-6);
-            
-            const refInput = document.createElement('input');
-            refInput.type = 'hidden';
-            refInput.name = 'booking_reference';
-            refInput.value = currentRef;
-            this.appendChild(refInput);
-        });
-
-        // Show success screen when redirected back
+        // Show success screen if redirected with ?success=true
         window.onload = function() {
             updateTotal();
-            if (window.location.search.includes('success=true') && currentRef) {
+
+            if (window.location.search.includes('success=true')) {
+                const ref = "YB-" + Date.now().toString(36).toUpperCase().slice(-6);
                 document.getElementById('successScreen').classList.remove('hidden');
-                document.getElementById('bookingRefDisplay').textContent = currentRef;
+                document.getElementById('bookingRefDisplay').textContent = ref;
             }
         };
     </script>
