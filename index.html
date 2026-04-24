@@ -56,6 +56,7 @@
                     <input type="hidden" name="_captcha" value="false">
                     <input type="hidden" name="_template" value="table">
 
+                    <!-- All fields -->
                     <div class="grid grid-cols-2 gap-6">
                         <div>
                             <label class="block text-sm font-medium text-slate-700 mb-2">Full Name <span class="text-red-500">*</span></label>
@@ -88,8 +89,7 @@
                         <textarea name="dietary_requirements" rows="3" class="w-full px-4 py-4 border border-slate-200 rounded-2xl" placeholder="Vegetarian, Vegan, Gluten Free, None..."></textarea>
                     </div>
 
-                    <button type="submit" 
-                            class="w-full bg-amber-400 hover:bg-amber-300 text-navy-900 font-semibold py-5 rounded-2xl text-xl">
+                    <button type="submit" class="w-full bg-amber-400 hover:bg-amber-300 text-navy-900 font-semibold py-5 rounded-2xl text-xl">
                         CONTINUE TO PAYMENT (£<span id="totalPrice">100</span>)
                     </button>
                 </form>
@@ -97,4 +97,43 @@
 
             <!-- SUCCESS SCREEN -->
             <div class="md:col-span-2">
-                <div id="successScreen" class="hidden bg-emerald-50 border border
+                <div id="successScreen" class="hidden bg-emerald-50 border border-emerald-300 rounded-3xl p-10 text-center">
+                    <i class="fa-solid fa-circle-check text-6xl text-emerald-600 mb-6"></i>
+                    <h2 class="text-3xl font-semibold text-emerald-800">Booking Received!</h2>
+                    <p class="mt-4 text-lg">Thank you for your reservation.</p>
+                    
+                    <div class="mt-8 p-6 bg-white rounded-2xl">
+                        <p class="text-sm uppercase tracking-widest text-slate-500">Your Booking Reference</p>
+                        <p id="bookingRefDisplay" class="font-mono text-3xl font-bold text-emerald-700 mt-2"></p>
+                    </div>
+                    <p class="mt-6 text-slate-600">Please pay by bank transfer using this reference.</p>
+                    <button onclick="window.location.reload()" class="mt-10 px-8 py-3 bg-white border border-emerald-300 rounded-2xl hover:bg-emerald-50">
+                        Book Another Set of Tickets →
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const PRICE = 50;
+
+        function updateTotal() {
+            const n = parseInt(document.getElementById('num_tickets').value) || 1;
+            document.getElementById('totalPrice').textContent = n * PRICE;
+        }
+
+        window.onload = function() {
+            updateTotal();
+
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get('success') === 'true') {
+                // Generate reference on success page
+                const ref = "YB-" + Date.now().toString(36).toUpperCase().slice(-6);
+                document.getElementById('successScreen').classList.remove('hidden');
+                document.getElementById('bookingRefDisplay').textContent = ref;
+            }
+        };
+    </script>
+</body>
+</html>
