@@ -11,10 +11,17 @@
         body { font-family: 'Inter', system_ui, sans-serif; }
         .heading-font { font-family: 'Playfair Display', sans-serif; }
         .navy-gradient { background: linear-gradient(135deg, #001f3f 0%, #003366 100%); }
+      
+        .hero-bg {
+            background-image: linear-gradient(rgba(0,31,63,0.75), rgba(0,31,63,0.85)),
+                              url('https://files.oaiusercontent.com/file-j80XK?se=2026-04-25T00%3A00%3A00Z&sp=r&sv=2024-08-04&sr=b&rscc=max-age%3D3628800%2C%20immutable&rscd=attachment%3B%20filename%3DSummer%20Ball%20Poster.jpg&sig=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
     </style>
 </head>
 <body class="bg-slate-50">
-
     <nav class="navy-gradient text-white py-4 sticky top-0 z-50 shadow-lg">
         <div class="max-w-6xl mx-auto px-6 flex items-center justify-between">
             <div class="flex items-center gap-3">
@@ -26,38 +33,7 @@
             </div>
         </div>
     </nav>
-
-    <section id="tickets" class="max-w-6xl mx-auto px-6 py-16">
-        <div class="text-center mb-12">
-            <h2 class="text-4xl font-semibold mb-3">Reserve Your Tickets</h2>
-            <p class="text-slate-600">£50 per person • Country Themed Party at The Wardroom</p>
-        </div>
-
-        <div class="grid md:grid-cols-5 gap-12">
-            <div class="md:col-span-3 bg-white rounded-3xl shadow-xl p-10">
-                <form id="ticketForm" class="space-y-8">
-                    <div class="grid grid-cols-2 gap-6">
-                        <div>
-                            <label class="block text-sm font-medium text-slate-700 mb-2">Full Name <span class="text-red-500">*</span></label>
-                            <input type="text" id="full_name" required class="w-full px-4 py-4 border border-slate-200 rounded-2xl">
-                        </div>
-                        <div>
-                            <label class="block text-sm font-medium text-slate-700 mb-2">Service Number</label>
-                            <input type="text" id="service_number" maxlength="8" class="w-full px-4 py-4 border border-slate-200 rounded-2xl">
-                        </div>
-                    </div>
-
-                    <div>
-                        <label class="block text-sm font-medium text-slate-700 mb-2">Mess Number</label>
-                        <input type="text" id="mess_number" class="w-full px-4 py-4 border border-slate-200 rounded-2xl">
-                    </div>
-
-                    <div>
-                        <label class="block text-sm font-medium text-slate-700 mb-2">Email Address <span class="text-red-500">*</span></label>
-                        <input type="email" id="email" required class="w-full px-4 py-4 border border-slate-200 rounded-2xl">
-                    </div>
-
-                    <div>
-                        <label class="block text-sm font-medium text-slate-700 mb-2">Number of Tickets <span class="text-red-500">*</span></label>
-                        <select id="num_tickets" required onchange="updateTotal()" class="w-full px-4 py-4 border border-slate-200 rounded-2xl">
-                            <option value="1">1 (£50)</option>
+    <header class="hero-bg text-white py-24 md:py-32">
+        <div class="max-w-6xl mx-auto px-6 text-center">
+            <h2 class="heading-font text-5xl md:text-6xl leading-none tracking-tighter mb-4">RNAS Yeovilton<br>Summer Ball 2026</h2>
+            <p class
