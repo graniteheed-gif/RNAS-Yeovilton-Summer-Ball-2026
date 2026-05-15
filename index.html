@@ -11,17 +11,10 @@
         body { font-family: 'Inter', system_ui, sans-serif; }
         .heading-font { font-family: 'Playfair Display', sans-serif; }
         .navy-gradient { background: linear-gradient(135deg, #001f3f 0%, #003366 100%); }
-      
-        .hero-bg {
-            background-image: linear-gradient(rgba(0,31,63,0.75), rgba(0,31,63,0.85)),
-                              url('https://files.oaiusercontent.com/file-j80XK?se=2026-04-25T00%3A00%3A00Z&sp=r&sv=2024-08-04&sr=b&rscc=max-age%3D3628800%2C%20immutable&rscd=attachment%3B%20filename%3DSummer%20Ball%20Poster.jpg&sig=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-        }
     </style>
 </head>
 <body class="bg-slate-50">
+
     <nav class="navy-gradient text-white py-4 sticky top-0 z-50 shadow-lg">
         <div class="max-w-6xl mx-auto px-6 flex items-center justify-between">
             <div class="flex items-center gap-3">
@@ -33,18 +26,13 @@
             </div>
         </div>
     </nav>
-    <header class="hero-bg text-white py-24 md:py-32">
-        <div class="max-w-6xl mx-auto px-6 text-center">
-            <h2 class="heading-font text-5xl md:text-6xl leading-none tracking-tighter mb-4">RNAS Yeovilton<br>Summer Ball 2026</h2>
-            <p class="text-3xl text-amber-400 font-medium">Country Themed Party</p>
-            <p class="mt-4 text-xl">The Wardroom • Saturday 11 July 2026</p>
-        </div>
-    </header>
+
     <section id="tickets" class="max-w-6xl mx-auto px-6 py-16">
         <div class="text-center mb-12">
             <h2 class="text-4xl font-semibold mb-3">Reserve Your Tickets</h2>
             <p class="text-slate-600">£50 per person • Country Themed Party at The Wardroom</p>
         </div>
+
         <div class="grid md:grid-cols-5 gap-12">
             <div class="md:col-span-3 bg-white rounded-3xl shadow-xl p-10">
                 <form id="ticketForm" class="space-y-8">
@@ -54,12 +42,11 @@
                             <input type="text" id="full_name" required class="w-full px-4 py-4 border border-slate-200 rounded-2xl">
                         </div>
                         <div>
-                            <label class="block text-sm font-medium text-slate-700 mb-2">Service Number <span class="text-slate-400">(8 digits if applicable)</span></label>
+                            <label class="block text-sm font-medium text-slate-700 mb-2">Service Number</label>
                             <input type="text" id="service_number" maxlength="8" class="w-full px-4 py-4 border border-slate-200 rounded-2xl">
                         </div>
                     </div>
 
-                    <!-- New Mess Number Field -->
                     <div>
                         <label class="block text-sm font-medium text-slate-700 mb-2">Mess Number</label>
                         <input type="text" id="mess_number" class="w-full px-4 py-4 border border-slate-200 rounded-2xl">
@@ -69,95 +56,8 @@
                         <label class="block text-sm font-medium text-slate-700 mb-2">Email Address <span class="text-red-500">*</span></label>
                         <input type="email" id="email" required class="w-full px-4 py-4 border border-slate-200 rounded-2xl">
                     </div>
+
                     <div>
                         <label class="block text-sm font-medium text-slate-700 mb-2">Number of Tickets <span class="text-red-500">*</span></label>
                         <select id="num_tickets" required onchange="updateTotal()" class="w-full px-4 py-4 border border-slate-200 rounded-2xl">
                             <option value="1">1 (£50)</option>
-                            <option value="2" selected>2 (£100)</option>
-                            <option value="3">3 (£150)</option>
-                            <option value="4">4 (£200)</option>
-                            <option value="5">5 (£250)</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium text-slate-700 mb-2">Dietary Requirements</label>
-                        <textarea id="dietary_requirements" rows="3" class="w-full px-4 py-4 border border-slate-200 rounded-2xl" placeholder="Vegetarian, Vegan, Gluten Free, None..."></textarea>
-                    </div>
-                    <button onclick="showPaymentScreen(event)"
-                            class="w-full bg-amber-400 hover:bg-amber-300 text-navy-900 font-semibold py-5 rounded-2xl text-xl">
-                        Generate Booking Ref (Keep Scrolling Down After For Details) (£<span id="totalPrice">100</span>)
-                    </button>
-                </form>
-            </div>
-            <!-- PAYMENT / SUCCESS SCREEN -->
-            <div class="md:col-span-2">
-                <div id="paymentScreen" class="hidden bg-emerald-50 border border-emerald-300 rounded-3xl p-10 text-center">
-                    <i class="fa-solid fa-circle-check text-6xl text-emerald-600 mb-6"></i>
-                    <h2 class="text-3xl font-semibold text-emerald-800">Payment Reference Ready</h2>
-                 
-                    <div class="mt-8 p-6 bg-white rounded-2xl text-left">
-                        <p class="text-sm uppercase tracking-widest text-slate-500 mb-3">Booking Reference</p>
-                        <p id="bookingRefDisplay" class="font-mono text-3xl font-bold text-emerald-700"></p>
-                     
-                        <div class="h-px bg-slate-200 my-6"></div>
-                     
-                        <p class="text-sm uppercase tracking-widest text-slate-500 mb-3">Bank Transfer Details</p>
-                        <p><strong>Account Name:</strong> RNAS Yeovilton Wardroom Mess</p>
-                        <p><strong>Sort Code:</strong> 30-99-98</p>
-                        <p><strong>Account Number:</strong> 00278537</p>
-                        <p><strong>USE ABOVE IF NOT PAYING USING MESS NUMBER</p>
-                    </div>
-                    <button onclick="confirmAndSubmit()"
-                            class="mt-10 w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-5 rounded-2xl text-xl">
-                        I have paid above/Using Mess Number
-                    </button>
-                </div>
-            </div>
-        </div>
-    </section>
-    <script>
-        const PRICE = 50;
-        let currentRef = "";
-        function updateTotal() {
-            const n = parseInt(document.getElementById('num_tickets').value) || 1;
-            document.getElementById('totalPrice').textContent = n * PRICE;
-        }
-        function showPaymentScreen(e) {
-            e.preventDefault();
-            currentRef = "YB-" + Date.now().toString(36).toUpperCase().slice(-6);
-            document.getElementById('paymentScreen').classList.remove('hidden');
-            document.getElementById('bookingRefDisplay').textContent = currentRef;
-        }
-        function confirmAndSubmit() {
-            if (!currentRef) return;
-            const form = document.createElement('form');
-            form.method = "POST";
-            form.action = "https://formsubmit.co/graniteheed@gmail.com";
-            form.style.display = "none";
-            const fields = {
-                full_name: document.getElementById("full_name").value,
-                service_number: document.getElementById("service_number").value,
-                mess_number: document.getElementById("mess_number").value,          <!-- Added -->
-                email: document.getElementById("email").value,
-                num_tickets: document.getElementById("num_tickets").value,
-                dietary_requirements: document.getElementById("dietary_requirements").value,
-                booking_reference: currentRef,
-                _subject: "Summer Ball Ticket - New Booking",
-                _cc: document.getElementById("email").value,
-                _next: "https://graniteheed-gif.github.io/RNAS-Yeovilton-Summer-Ball-2026/?success=true",
-                _template: "table"
-            };
-            for (let key in fields) {
-                const input = document.createElement("input");
-                input.type = "hidden";
-                input.name = key;
-                input.value = fields[key];
-                form.appendChild(input);
-            }
-            document.body.appendChild(form);
-            form.submit();
-        }
-        window.onload = updateTotal;
-    </script>
-</body>
-</html>
