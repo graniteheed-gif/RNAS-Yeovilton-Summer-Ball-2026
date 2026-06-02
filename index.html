@@ -142,15 +142,16 @@
                 access_key: "b6798523-bfed-4f41-a5c2-e8a439be530b",
                 subject: "Summer Ball Ticket - New Booking",
                 from_name: "RNAS Yeovilton Summer Ball",
-                email: "graniteheed@gmail.com",                    // Only here - sends to you
+                email: "graniteheed@gmail.com",           // Only used here to send to you
                 replyto: document.getElementById("email").value,
                 full_name: document.getElementById("full_name").value,
                 service_number: document.getElementById("service_number").value,
                 mess_number: document.getElementById("mess_number").value,
-                customer_email: document.getElementById("email").value,
+                customer_email: document.getElementById("email").value,   // This should be the main column
                 num_tickets: document.getElementById("num_tickets").value,
                 dietary_requirements: document.getElementById("dietary_requirements").value,
-                booking_reference: currentRef
+                booking_reference: currentRef,
+                _captcha: "false"
             };
 
             for (let key in fields) {
