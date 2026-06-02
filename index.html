@@ -141,43 +141,46 @@
         }
 
         function confirmAndSubmit() {
-            if (!currentRef) return;
+    if (!currentRef) return;
 
-            const customerEmail = document.getElementById("email").value.trim();
+    const customerEmail = document.getElementById("email").value.trim();
 
-            const form = document.createElement('form');
-            form.method = "POST";
-            form.action = "https://api.web3forms.com/submit";
-            form.style.display = "none";
+    const form = document.createElement('form');
+    form.method = "POST";
+    form.action = "https://api.web3forms.com/submit";
+    form.style.display = "none";
 
-            const fields = {
-                access_key: "b6798523-bfed-4f41-a5c2-e8a439be530b",
-                subject: "Summer Ball Ticket - New Booking",
-                from_name: "RNAS Yeovilton Summer Ball",
-                
-                email: "graniteheed@gmail.com",   // Notification to you
-                cc: customerEmail, accounts1@heronwardroom.co.uk               // Confirmation to the person who booked
-                
-                full_name: document.getElementById("full_name").value,
-                service_number: document.getElementById("service_number").value,
-                mess_number: document.getElementById("mess_number").value,
-                Email: customerEmail("email").value,
-                num_tickets: document.getElementById("num_tickets").value,
-                dietary_requirements: document.getElementById("dietary_requirements").value,
-                booking_reference: currentRef
-            };
+    const fields = {
+        access_key: "b6798523-bfed-4f41-a5c2-e8a439be530b",
+        subject: "Summer Ball Ticket - New Booking",
+        from_name: "RNAS Yeovilton Summer Ball",
 
-            for (let key in fields) {
-                const input = document.createElement("input");
-                input.type = "hidden";
-                input.name = key;
-                input.value = fields[key];
-                form.appendChild(input);
-            }
+        // Primary recipient
+        email: "graniteheed@gmail.com",
 
-            document.body.appendChild(form);
-            form.submit();
-        }
+        // Copy to accounts
+        cc: "accounts1@heronwardroom.co.uk",
+
+        full_name: document.getElementById("full_name").value,
+        service_number: document.getElementById("service_number").value,
+        mess_number: document.getElementById("mess_number").value,
+        Email: customerEmail,
+        num_tickets: document.getElementById("num_tickets").value,
+        dietary_requirements: document.getElementById("dietary_requirements").value,
+        booking_reference: currentRef
+    };
+
+    for (let key in fields) {
+        const input = document.createElement("input");
+        input.type = "hidden";
+        input.name = key;
+        input.value = fields[key];
+        form.appendChild(input);
+    }
+
+    document.body.appendChild(form);
+    form.submit();
+}
 
         window.onload = updateTotal;
     </script>
