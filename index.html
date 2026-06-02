@@ -141,13 +141,13 @@
             const fields = {
                 access_key: "b6798523-bfed-4f41-a5c2-e8a439be530b",
                 subject: "Summer Ball Ticket - New Booking",
-                from_name: document.getElementById("full_name").value || "Customer",
-                email: "graniteheed@gmail.com",           // Notification sent to you
-                replyto: document.getElementById("email").value,   // Reply goes to customer
+                from_name: "RNAS Yeovilton Summer Ball",     // ← Fixed as requested
+                email: "graniteheed@gmail.com",
+                replyto: document.getElementById("email").value,
                 full_name: document.getElementById("full_name").value,
                 service_number: document.getElementById("service_number").value,
                 mess_number: document.getElementById("mess_number").value,
-                customer_email: document.getElementById("email").value,   // This should appear in Sheets
+                customer_email: document.getElementById("email").value,
                 num_tickets: document.getElementById("num_tickets").value,
                 dietary_requirements: document.getElementById("dietary_requirements").value,
                 booking_reference: currentRef
@@ -163,11 +163,4 @@
                 }
             }
 
-            document.body.appendChild(form);
-            form.submit();
-        }
-
-        window.onload = updateTotal;
-    </script>
-</body>
-</html>
+            document.body
