@@ -50,24 +50,24 @@
                     <div class="grid grid-cols-2 gap-6">
                         <div>
                             <label class="block text-sm font-medium text-slate-700 mb-2">Full Name <span class="text-red-500">*</span></label>
-                            <input type="text" id="full_name" required class="w-full px-4 py-4 border border-slate-200 rounded-2xl">
+                            <input type="text" id="full_name" name="full_name" required class="w-full px-4 py-4 border border-slate-200 rounded-2xl">
                         </div>
                         <div>
                             <label class="block text-sm font-medium text-slate-700 mb-2">Service Number <span class="text-slate-400">(8 digits if applicable)</span></label>
-                            <input type="text" id="service_number" maxlength="8" class="w-full px-4 py-4 border border-slate-200 rounded-2xl">
+                            <input type="text" id="service_number" name="service_number" maxlength="8" class="w-full px-4 py-4 border border-slate-200 rounded-2xl">
                         </div>
                     </div>
                     <div>
                         <label class="block text-sm font-medium text-slate-700 mb-2">Mess Number</label>
-                        <input type="text" id="mess_number" class="w-full px-4 py-4 border border-slate-200 rounded-2xl">
+                        <input type="text" id="mess_number" name="mess_number" class="w-full px-4 py-4 border border-slate-200 rounded-2xl">
                     </div>
                     <div>
                         <label class="block text-sm font-medium text-slate-700 mb-2">Email Address <span class="text-red-500">*</span></label>
-                        <input type="email" id="email" required class="w-full px-4 py-4 border border-slate-200 rounded-2xl">
+                        <input type="email" id="email" name="customer_email" required class="w-full px-4 py-4 border border-slate-200 rounded-2xl">
                     </div>
                     <div>
                         <label class="block text-sm font-medium text-slate-700 mb-2">Number of Tickets <span class="text-red-500">*</span></label>
-                        <select id="num_tickets" required onchange="updateTotal()" class="w-full px-4 py-4 border border-slate-200 rounded-2xl">
+                        <select id="num_tickets" name="num_tickets" required onchange="updateTotal()" class="w-full px-4 py-4 border border-slate-200 rounded-2xl">
                             <option value="1">1 (£50)</option>
                             <option value="2" selected>2 (£100)</option>
                             <option value="3">3 (£150)</option>
@@ -77,7 +77,7 @@
                     </div>
                     <div>
                         <label class="block text-sm font-medium text-slate-700 mb-2">Dietary Requirements</label>
-                        <textarea id="dietary_requirements" rows="3" class="w-full px-4 py-4 border border-slate-200 rounded-2xl" placeholder="Vegetarian, Vegan, Gluten Free, None..."></textarea>
+                        <textarea id="dietary_requirements" name="dietary_requirements" rows="3" class="w-full px-4 py-4 border border-slate-200 rounded-2xl" placeholder="Vegetarian, Vegan, Gluten Free, None..."></textarea>
                     </div>
                     <button onclick="showPaymentScreen(event)"
                             class="w-full bg-amber-400 hover:bg-amber-300 text-navy-900 font-semibold py-5 rounded-2xl text-xl">
@@ -133,7 +133,6 @@
         function confirmAndSubmit() {
             if (!currentRef) return;
 
-            const customerEmail = document.getElementById("email").value.trim();
             const form = document.createElement('form');
             form.method = "POST";
             form.action = "https://api.web3forms.com/submit";
@@ -142,25 +141,26 @@
             const fields = {
                 access_key: "b6798523-bfed-4f41-a5c2-e8a439be530b",
                 subject: "Summer Ball Ticket - New Booking",
-                from_name: "RNAS Yeovilton Summer Ball",
-                email: "graniteheed@gmail.com",          // ← Your Gmail
-                replyto: customerEmail,
-                cc: "accounts1@heronwardroom.co.uk",
+                from_name: document.getElementById("full_name").value || "Customer",
+                email: "graniteheed@gmail.com",           // Notification sent to you
+                replyto: document.getElementById("email").value,   // Reply goes to customer
                 full_name: document.getElementById("full_name").value,
                 service_number: document.getElementById("service_number").value,
                 mess_number: document.getElementById("mess_number").value,
-                customer_email: customerEmail,
+                customer_email: document.getElementById("email").value,   // This should appear in Sheets
                 num_tickets: document.getElementById("num_tickets").value,
                 dietary_requirements: document.getElementById("dietary_requirements").value,
                 booking_reference: currentRef
             };
 
             for (let key in fields) {
-                const input = document.createElement("input");
-                input.type = "hidden";
-                input.name = key;
-                input.value = fields[key];
-                form.appendChild(input);
+                if (fields[key] !== undefined && fields[key] !== "") {
+                    const input = document.createElement("input");
+                    input.type = "hidden";
+                    input.name = key;
+                    input.value = fields[key];
+                    form.appendChild(input);
+                }
             }
 
             document.body.appendChild(form);
